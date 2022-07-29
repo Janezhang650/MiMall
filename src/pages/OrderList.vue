@@ -1,10 +1,10 @@
 <template>
-  <div id="header">
-    Nav-header
+  <div>
+    orderList
   </div>
 </template>
 <script>
 export default {
-  name: 'nav-header'
+  name: 'order-list'
 }
 </script>
