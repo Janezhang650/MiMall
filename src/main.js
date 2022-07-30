@@ -20,6 +20,8 @@ axios.interceptors.response.use(response => {
     return res.data
   } else if (res.status === 10) { // 否则跳转到登录页面
     window.location.href = '/#/login'
+  } else {
+    alert(res.msg)
   }
 })
 
