@@ -3,13 +3,16 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import App from './App.vue'
 import router from './router'
+import env from './env'
 
 Vue.config.productionTip = false
 
 Vue.use(axios, VueAxios)
 
-// 默认基础路径
+// 默认基础路径(代理)
 axios.defaults.baseURL = '/api'
+// 根据环境变量设置请求路径
+axios.defaults.baseURL = env.baseURL
 // 请求时间
 axios.defaults.timeout = 8000
 // 请求拦截处理

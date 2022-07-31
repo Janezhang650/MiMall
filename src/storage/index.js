@@ -9,7 +9,7 @@ export default {
    * @method setItem
    * @param {string} key
    * @param {string} value
-   * @param {string} moduleName
+   * @param {string} moduleName(可选)
    */
   setItem (key, value, moduleName) {
     // 判断模块名是否空
@@ -23,6 +23,7 @@ export default {
     } else {
       // 获取sessionStorage存储的值
       const val = this.getStorage()
+      console.log(val)
       // 将新的键值对添加进val中
       val[key] = value
       // 将更新之后的val重新存储进sessionStorage
@@ -34,7 +35,7 @@ export default {
    * @description 根据key从sessionStorage的某个模块获取值
    * @method getItem
    * @param {string} key
-   * @param {string} moduleName
+   * @param {string} moduleName（可选）
    * @return {object}
    */
   getItem (key, moduleName) {
@@ -61,7 +62,7 @@ export default {
    * @description 根据key从sessionStorage删除某个值
    * @method clear
    * @param {string} key
-   * @param {string} moduleName
+   * @param {string} moduleName（可选）
    */
   clear (key, moduleName) {
     // 先从sessionStorage获取数据
@@ -69,7 +70,11 @@ export default {
     // 判断模块名是否为空
     if (moduleName) {
       // 若模块存在，则删除模块下的键值对
-      if (val[moduleName]) delete val[moduleName][key]
+      if (val[moduleName]) {
+        delete val[moduleName][key]
+      } else { // 否则直接返回
+        return
+      }
     } else {
       // 否则直接删除val的键值对
       delete val[key]
