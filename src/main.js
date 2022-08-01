@@ -10,6 +10,12 @@ Vue.config.productionTip = false
 Vue.prototype.axios = axios
 Vue.use(VueAxios)
 
+// mock开关
+const mock = true
+if (mock) {
+  require('./mock/api')
+}
+
 // 默认基础路径(代理)
 // axios.defaults.baseURL = '/api'
 // 根据环境变量设置请求路径

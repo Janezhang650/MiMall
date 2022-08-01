@@ -30,6 +30,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
     "lazyload": "^2.0.0-rc.2",
+    "mockjs": "^1.1.0",
     "node-sass": "^7.0.1",
     "sass": "^1.54.0",
     "sass-loader": "^10.3.1",

@@ -16,7 +16,11 @@ export default {
   },
   mounted () {
     // 请求加载本地 mock
-    this.axios.get('/mock/user/login.json').then(res => {
+    // this.axios.get('/mock/user/login.json').then(res => {
+    //   this.res = res
+    // })
+    // 集成MOCK API- mock.js拦截
+    this.axios.get('./mock/api.js').then(res => {
       this.res = res
     })
   }
