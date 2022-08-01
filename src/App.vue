@@ -19,10 +19,14 @@ export default {
     // this.axios.get('/mock/user/login.json').then(res => {
     //   this.res = res
     // })
-    // 集成MOCK API- mock.js拦截
-    this.axios.get('./mock/api.js').then(res => {
+    // fast-mock平台
+    this.axios.get('/user/login').then(res => {
       this.res = res
     })
+    // 集成MOCK API- mock.js拦截
+    // this.axios.get('./mock/api.js').then(res => {
+    //   this.res = res
+    // })
   }
 }
 </script>

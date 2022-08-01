@@ -11,15 +11,17 @@ Vue.prototype.axios = axios
 Vue.use(VueAxios)
 
 // mock开关
-const mock = true
-if (mock) {
-  require('./mock/api')
-}
+// const mock = true
+// if (mock) {
+//   require('./mock/api')
+// }
 
 // 默认基础路径(代理)
 // axios.defaults.baseURL = '/api'
 // 根据环境变量设置请求路径
 // axios.defaults.baseURL = env.baseURL
+// fast-mock平台接口
+axios.defaults.baseURL = 'https://www.fastmock.site/mock/631dce6bd82b48b299169771ae082531/api'
 // 请求时间
 axios.defaults.timeout = 8000
 // 请求拦截处理
