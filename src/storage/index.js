@@ -22,12 +22,11 @@ export default {
       this.setItem(moduleName, module)
     } else {
       // 获取sessionStorage存储的值
-      const val = this.getStorage()
-      console.log(val)
+      const sessionVal = this.getStorage()
       // 将新的键值对添加进val中
-      val[key] = value
+      sessionVal[key] = value
       // 将更新之后的val重新存储进sessionStorage
-      window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(val))
+      window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(sessionVal))
     }
   },
 
@@ -43,8 +42,10 @@ export default {
     if (moduleName) {
       // 根据模块名获取模块对应的信息
       const module = this.getItem(moduleName)
-      // 获取该模块下的key对应的值
-      return module[key]
+      // 如果session中存在该模块
+      if(module) {
+        return module[key]
+      }
     }
     return this.getStorage()[key]
   },
@@ -66,20 +67,20 @@ export default {
    */
   clear (key, moduleName) {
     // 先从sessionStorage获取数据
-    const val = this.getStorage()
+    const sessionVal = this.getStorage()
     // 判断模块名是否为空
     if (moduleName) {
       // 若模块存在，则删除模块下的键值对
-      if (val[moduleName]) {
-        delete val[moduleName][key]
+      if (sessionVal[moduleName]) {
+        delete sessionVal[moduleName][key]
       } else { // 否则直接返回
         return
       }
     } else {
       // 否则直接删除val的键值对
-      delete val[key]
+      delete sessionVal[key]
     }
     // 将更新之后的数据重新存储进sessionStorage
-    window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(val))
+    window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(sessionVal))
   }
 }
