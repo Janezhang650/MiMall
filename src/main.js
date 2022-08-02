@@ -3,6 +3,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import App from './App.vue'
 import router from './router'
+import './assets/style/base.scss'
 // import env from './env'
 
 Vue.config.productionTip = false
@@ -17,7 +18,7 @@ Vue.use(VueAxios)
 // }
 
 // 默认基础路径(代理)
-// axios.defaults.baseURL = '/api'
+axios.defaults.baseURL = '/api'
 // 根据环境变量设置请求路径
 // axios.defaults.baseURL = env.baseURL
 // fast-mock平台接口

@@ -1,0 +1,22 @@
+@mixin flex($jc: space-between, $ai: center) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+@mixin  bgImg($w:0, $h:0, $url:'', $size: contain) {
+  width: $w;
+  height: $h;
+  background: $url no-repeat;
+  background-size: $size;
+}
+
+@mixin baseContainer {
+  margin: 0 auto;
+  width: 1226px;
+}
+
+@mixin size($w:0, $h:0) {
+  width: $w;
+  height: $h;
+}
