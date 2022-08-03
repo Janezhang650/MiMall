@@ -17,10 +17,15 @@
           <li><a href="javascript:;">智能生活</a></li>
         </ul>
         <ul class="topbar-user">
-          <li><a href="javascript:;">登录</a><span>|</span></li>
-          <li><a href="javascript:;">注册</a><span>|</span></li>
+          <li>
+            <a href="javascript:;" v-if="username === ''" @click="getLogin">登录</a>
+            <a href="javascript:;" v-else>{{ username }}</a>
+            <span>|</span>
+          </li>
+          <li v-if="username === ''"><a href="javascript:;">注册</a><span>|</span></li>
+          <li v-if="username"><a href="javascript:;" @click="goToOrder">我的订单</a><span>|</span></li>
           <li><a href="javascript:;">消息通知</a><span>|</span></li>
-          <li class="cart"><a href="javascript:;"><em class="iconfont">&#xe603;</em>购物车</a></li>
+          <li class="cart"><a href="javascript:;" @click="goToCart"><em class="iconfont">&#xe603;</em>购物车</a></li>
         </ul>
       </div>
       <div class="site-header">
@@ -34,13 +39,13 @@
               <div class="children">
                 <ul class="products">
                   <li class="product-item"  v-for="(product, categoryId) in products" :key="categoryId">
-                    <a href="">
+                    <a :href="'/#/product/' + product.id ">
                       <div class="product-pic">
                         <img :src="product.mainImage" :alt="product.subtitle">
                       </div>
                       <div class="product-name">{{product.name}}</div>
                     </a>
-                    <div class="product-price">{{product.price}}元</div>
+                    <div class="product-price">{{product.price | currency }}元</div>
                   </li>
                 </ul>
               </div>
@@ -77,6 +82,14 @@ export default {
   mounted () {
     this.getProducts()
   },
+  // 过滤器：保证价格不为空
+  filters: {
+    currency (val) {
+      // 如果没有价格，则返回0.00
+      if (!val) return 0.00
+      return val.toFixed(2)
+    }
+  },
   methods: {
     // 获取产品列表
     getProducts () {
@@ -88,6 +101,18 @@ export default {
       }).then(res => {
         this.products = res.list.splice(0, 6)
       })
+    },
+    // 跳转到登录页面
+    getLogin () {
+      this.$router.push('/login')
+    },
+    // 跳转到购物车页面
+    goToCart () {
+      this.$router.push('/cart')
+    },
+    // 跳转到订单页面
+    goToOrder () {
+      this.$router.push('/order')
     }
   }
 }
