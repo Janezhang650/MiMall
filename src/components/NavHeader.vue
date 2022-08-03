@@ -38,6 +38,7 @@ export default {
   @import '../assets/style/common.scss';
   @import '../assets/style/config.scss';
   .header {
+    height: 140px;
     .site-bar {
       @include size(100%, 40px);
       line-height: 40px;
@@ -54,6 +55,7 @@ export default {
       .container {
         @include flex();
         @include baseContainer();
+        height: 100%;
       }
     }
   }
