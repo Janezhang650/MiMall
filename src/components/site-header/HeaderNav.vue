@@ -90,6 +90,7 @@ export default {
         border-top: 1px solid $colorF;
         line-height: 0;
         text-align: center;
+        background: $colorW;
         display: none;
         box-shadow: 0 7px 6px 0 rgba(0, 0, 0, .11);
         .products {
