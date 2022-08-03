@@ -1,2 +1,12 @@
 @import './iconfont.css';
 @import './reset.scss';
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
