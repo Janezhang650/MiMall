@@ -62,8 +62,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '../assets/style/common.scss';
   .index {
     .container{
+      @include baseContainer();
       .swiper-box {
         height: 451px;
         .swiper-container {
