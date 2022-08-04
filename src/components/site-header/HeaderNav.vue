@@ -93,6 +93,7 @@ export default {
         background: $colorW;
         display: none;
         box-shadow: 0 7px 6px 0 rgba(0, 0, 0, .11);
+        z-index: 999;
         .products {
           @include flex(space-between, center);
           margin-left: 156px;
